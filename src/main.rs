@@ -6,6 +6,8 @@ use std::{fs, path::PathBuf};
 #[derive(Parser, Debug)]
 struct Args {
     /// input markdown file path
+    /// 
+    /// If not provided, input will be read from stdin
     #[arg(short, long)]
     input: Option<PathBuf>,
 
@@ -89,7 +91,7 @@ fn main() {
             fs::write(path, full_html_output).expect("Failed to write output file");
         }
         None => {
-            println!("Path not ");
+            println!("Path not provided, printing to stdout:\n{}", full_html_output);
         }
     }
 }
